@@ -5,7 +5,11 @@ Player::Player(std::vector<Card*> tempHand, std::string tempName)
 {
 	playerName = tempName;
 	hand = tempHand;
-	handSize = hand.size();
+	handSize = 0;
+	for (int i = 0; i < hand.size(); i++)
+	{
+		handSize += hand.at(i)->GetCardAmount();
+	}
 }
 
 Player::~Player()
@@ -26,8 +30,6 @@ void Player::DealCards(int tempCARD, int tempAmount)
 			}
 		}
 	}
-	handSize = handSize - tempAmount;
-
-	if (handSize == 0)
+	if (hand.size() == 0)
 		std::cout << "Player " << playerName << " wins!" << std::endl;
 }

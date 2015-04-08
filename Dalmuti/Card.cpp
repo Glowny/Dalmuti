@@ -8,6 +8,14 @@ Card::Card(int tempCardValue)
 }
 
 
+Card::Card(int tempCardValue, int amount)
+{
+	cardValue = tempCardValue;
+	cardAmount = amount;
+}
+
+
+
 Card::~Card()
 {
 }

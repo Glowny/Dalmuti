@@ -15,7 +15,16 @@ void Table::AddPlayer(Player* newPlayer)
 
 void Table::Update()
 {
+	if (passes == players.size() - 1)
+	{
+		lastCard = 13;
+		lastCardAmount = 1;
+		std::cout << "pass succesfull!" << std::endl;
+		passes = 0;
+	}
+
 	AskPlayerToPlay();
+
 	Card* cardsToPlay = (*plit)->AI(&discard, lastCard, lastCardAmount);
 	if (cardsToPlay->GetCardValue() != 13)
 	{
@@ -24,22 +33,30 @@ void Table::Update()
 		lastCard = cardsToPlay->GetCardValue();
 		lastCardAmount = cardsToPlay->GetCardAmount();
 
-		players.at(0)->DealCards(cardsToPlay->GetCardValue(), cardsToPlay->GetCardAmount());
+		(*plit)->DealCards(cardsToPlay->GetCardValue(), cardsToPlay->GetCardAmount());
 		delete cardsToPlay;
 		passes = 0;
-		plit++;
-		if (plit == players.end())
-			plit = players.begin();
 	}
 	else
 		passes++;
+
+	plit++;
+	if (plit == players.end())
+		plit = players.begin();
 }
 
 void Table::AskPlayerToPlay()
 {
+	std::cout << std::endl;
+	std::cout << std::endl;
 	std::cout << (*plit)->GetName() << "'s turn" << std::endl;
 	diit = discard.end();
 	if (diit == discard.begin())
+	{
+		std::cout << "Table holds nothing" << std::endl;
+		std::cout << "What do you play?" << std::endl;
+	}
+	else if (lastCard == 13)
 	{
 		std::cout << "Table holds nothing" << std::endl;
 		std::cout << "What do you play?" << std::endl;
@@ -94,7 +111,7 @@ void Table::AskPlayerToPlay()
 		}
 		if (lastCardAmount >= 2)
 		{
-			if (lastCard == SEAMSTRESS || lastCard == DUCHESS)
+			if (lastCard == SEAMSTRESS || lastCard == DUCHESS || lastCard == SHEPHERDESS)
 				std::cout << "ES";
 			else
 				std::cout << "S";

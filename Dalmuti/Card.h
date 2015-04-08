@@ -24,6 +24,7 @@ class Card
 public:
 
 	Card(int cardValue);
+	Card(int tempCardValue, int amount);
 	~Card();
 
 	int GetCardValue();

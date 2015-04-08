@@ -4,10 +4,11 @@
 int main()
 {
 	Table* asd = GameGenerator::GenerateGameTable(4);
-
-	for (int i = 0; i < 3; i++)
+	asd->initTable();
+	while (true)
 	{
-		asd->Update();
-	}
+ 	 	asd->Update();
+  		system("PAUSE");
+  	}
 	return 0;
 }
