@@ -14,6 +14,7 @@ public:
 private:
 
 	std::vector<Player*> players;
+	std::vector<Player*>::iterator plit;
 
 	std::vector<Card*> discard;
 	std::vector<Card*>::iterator diit;
@@ -24,6 +25,7 @@ private:
 	void AskPlayerToPlay();
 	void checkWinner();
 
+	int passes;
 
 };
 

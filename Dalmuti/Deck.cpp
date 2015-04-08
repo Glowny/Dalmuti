@@ -20,11 +20,6 @@ Deck* Deck::MakeADeck()
 	std::srand(unsigned(std::time(0)));
 
 	std::vector<Card*> tempCards;
-	for (int i = 0; i < 13; i++)
-	{
-		Card* asd = new Card(13);
-		tempCards.push_back(asd);
-	}
 	for (int i = 0; i < 12; i++)
 	{
 		Card* asd = new Card(12);
