@@ -29,7 +29,7 @@ public:
 	int GetCardValue();
 
 	int GetCardAmount();
-	int SetCardAmount();
+	void SetCardAmount(int amount);
 
 private:
 
