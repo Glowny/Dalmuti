@@ -34,7 +34,7 @@ void Table::Update()
 
 void Table::AskPlayerToPlay()
 {
-	std::cout << (*plit)->GetName << "'s turn" << std::endl;
+	std::cout << (*plit)->GetName() << "'s turn" << std::endl;
 	diit = discard.end();
 	if (diit == discard.begin())
 	{

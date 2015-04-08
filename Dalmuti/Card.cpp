@@ -22,7 +22,7 @@ int Card::GetCardAmount()
 	return cardAmount;
 }
 
-int Card::SetCardAmount()
+void Card::SetCardAmount(int amount)
 {
-	return cardAmount;
+	cardAmount = amount;
 }

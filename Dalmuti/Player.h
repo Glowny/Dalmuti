@@ -24,7 +24,7 @@ public:
 
 	std::string GetName(){ return playerName; };
 	
-private:
+protected:
 
 	std::vector<Card*> hand;
 
