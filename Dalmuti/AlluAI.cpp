@@ -53,13 +53,16 @@ Card* AlluAI::AI(std::vector<Card*>* poytakortit, int ylinkortti, int ylimmankor
 		}
 	}
 
-	for (int i = 0; i < hand.size(); i++)
+	if (toPlay->GetCardValue() != NOCARD)
 	{
-		if (hand.at(i)->GetCardValue() == 0)
-			toPlay->SetCardAmount(toPlay->GetCardAmount() + hand.at(i)->GetCardAmount());
-	}
+		for (int i = 0; i < hand.size(); i++)
+		{
+			if (hand.at(i)->GetCardValue() == 0)
+				toPlay->SetCardAmount(toPlay->GetCardAmount() + hand.at(i)->GetCardAmount());
+		}
 
-	std::cout << "AlluAI plays: " << toPlay->GetCardValue() << "x" << toPlay->GetCardAmount() << std::endl;
+		std::cout << playerName << " plays: " << toPlay->GetCardValue() << "x" << toPlay->GetCardAmount() << std::endl;
+	}
 
 	return toPlay;
 }
