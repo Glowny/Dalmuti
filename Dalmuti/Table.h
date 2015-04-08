@@ -7,6 +7,8 @@ public:
 	Table();
 	~Table();
 
+	void initTable(){ plit = players.begin(); };
+
 	void AddPlayer(Player*);
 
 	void Update();

@@ -6,6 +6,7 @@ Table::Table()
 	lastCard = 13;
 	lastCardAmount = 1;
 	passes = 0;
+	plit = players.begin();
 }
 void Table::AddPlayer(Player* newPlayer)
 {
@@ -14,9 +15,8 @@ void Table::AddPlayer(Player* newPlayer)
 
 void Table::Update()
 {
-	plit = players.begin() + 1;
 	AskPlayerToPlay();
-	Card* cardsToPlay = players.at(0)->AI(&discard, lastCard, lastCardAmount);
+	Card* cardsToPlay = (*plit)->AI(&discard, lastCard, lastCardAmount);
 	if (cardsToPlay->GetCardValue() != 13)
 	{
 		discard.push_back(cardsToPlay);
@@ -27,6 +27,9 @@ void Table::Update()
 		players.at(0)->DealCards(cardsToPlay->GetCardValue(), cardsToPlay->GetCardAmount());
 		delete cardsToPlay;
 		passes = 0;
+		plit++;
+		if (plit == players.end())
+			plit = players.begin();
 	}
 	else
 		passes++;
@@ -34,7 +37,7 @@ void Table::Update()
 
 void Table::AskPlayerToPlay()
 {
-	std::cout << (*plit)->GetName << "'s turn" << std::endl;
+	std::cout << (*plit)->GetName() << "'s turn" << std::endl;
 	diit = discard.end();
 	if (diit == discard.begin())
 	{
