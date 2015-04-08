@@ -64,19 +64,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AlluAI.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="GameGenerator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Table.cpp" />
+    <ClCompile Include="VesaAly.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlluAI.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="GameGenerator.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Table.h" />
+    <ClInclude Include="VesaAly.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
