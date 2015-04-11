@@ -23,11 +23,13 @@ class Card
 {
 public:
 
+	Card(){};
 	Card(int cardValue);
 	Card(int cardValue, int amount);
 	~Card();
 
 	int GetCardValue();
+	void setCardValue(int value);
 
 	int GetCardAmount();
 	void SetCardAmount(int amount);
@@ -36,6 +38,5 @@ private:
 
 	int cardValue;
 	int cardAmount;
-	int passes;
 };
 

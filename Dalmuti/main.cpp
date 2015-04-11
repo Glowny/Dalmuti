@@ -3,7 +3,7 @@
 
 int main()
 {
-	Table* table = GameGenerator::GenerateGameTable(4);
+	Table* table = GameGenerator::GenerateGameTable(2);
 	table->InitTable();
 	while (true)
 	{

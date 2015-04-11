@@ -33,6 +33,7 @@ private:
 	Card* CallCurrentPlayerAI();
 
 	bool CheckPlay(Card* cards);
+		// alifunktioita CheckPlay():lle
 	bool CheckTable(Card* cards);
 	bool CheckHand(Card* cards);
 	
