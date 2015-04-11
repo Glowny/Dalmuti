@@ -20,8 +20,8 @@ public:
 		std::cout << playerName << " plays " << "1 Earl!" <<std::endl;
 		return new Card(3);
 	};
-	void DealCards(int card, int amount);
-
+	void DeleteCards(int card, int amount);
+	
 	std::string GetName(){ return playerName; };
 	
 protected:

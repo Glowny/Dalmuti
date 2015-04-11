@@ -17,7 +17,7 @@ Player::~Player()
 
 }
 
-void Player::DealCards(int tempCARD, int tempAmount)
+void Player::DeleteCards(int tempCARD, int tempAmount)
 {
 	for (int i = 0; i < tempAmount; i++)
 	{

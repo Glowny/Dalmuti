@@ -7,7 +7,7 @@ public:
 	Table();
 	~Table();
 
-	void initTable(){ plit = players.begin(); };
+	void InitTable(){ playerIterator = players.begin(); };
 
 	void AddPlayer(Player*);
 
@@ -16,16 +16,16 @@ public:
 private:
 
 	std::vector<Player*> players;
-	std::vector<Player*>::iterator plit;
+	std::vector<Player*>::iterator playerIterator;
 
 	std::vector<Card*> discard;
-	std::vector<Card*>::iterator diit;
+	std::vector<Card*>::iterator discardIterator;
 
-	int lastCard;
+	int lastCardValue;
 	int lastCardAmount;
 
 	void AskPlayerToPlay();
-	void checkWinner();
+	void CheckWinner();
 
 	int passes;
 

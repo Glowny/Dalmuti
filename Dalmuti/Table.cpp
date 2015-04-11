@@ -3,10 +3,10 @@
 
 Table::Table()
 {
-	lastCard = 13;
+	lastCardValue = 13;
 	lastCardAmount = 1;
 	passes = 0;
-	plit = players.begin();
+	playerIterator = players.begin();
 }
 void Table::AddPlayer(Player* newPlayer)
 {
@@ -17,7 +17,7 @@ void Table::Update()
 {
 	if (passes == players.size() - 1)
 	{
-		lastCard = 13;
+		lastCardValue = 13;
 		lastCardAmount = 1;
 		std::cout << "pass succesfull!" << std::endl;
 		passes = 0;
@@ -25,38 +25,40 @@ void Table::Update()
 
 	AskPlayerToPlay();
 
-	Card* cardsToPlay = (*plit)->AI(&discard, lastCard, lastCardAmount);
+	Card* cardsToPlay = (*playerIterator)->AI(&discard, lastCardValue, lastCardAmount);
 	if (cardsToPlay->GetCardValue() != 13)
 	{
 		discard.push_back(cardsToPlay);
 
-		lastCard = cardsToPlay->GetCardValue();
+		lastCardValue = cardsToPlay->GetCardValue();
 		lastCardAmount = cardsToPlay->GetCardAmount();
 
-		(*plit)->DealCards(cardsToPlay->GetCardValue(), cardsToPlay->GetCardAmount());
+		(*playerIterator)->DeleteCards(cardsToPlay->GetCardValue(), cardsToPlay->GetCardAmount());
 		delete cardsToPlay;
 		passes = 0;
 	}
 	else
 		passes++;
 
-	plit++;
-	if (plit == players.end())
-		plit = players.begin();
+	playerIterator++;
+	if (playerIterator == players.end())
+		playerIterator = players.begin();
 }
 
+// Tässä tietojen tulostus näytölle, ei muuta toiminnallisuutta.
 void Table::AskPlayerToPlay()
 {
 	std::cout << std::endl;
 	std::cout << std::endl;
-	std::cout << (*plit)->GetName() << "'s turn" << std::endl;
-	diit = discard.end();
-	if (diit == discard.begin())
+
+	std::cout << (*playerIterator)->GetName() << "'s turn" << std::endl;
+	discardIterator = discard.end();
+	if (discardIterator == discard.begin())
 	{
 		std::cout << "Table holds nothing" << std::endl;
 		std::cout << "What do you play?" << std::endl;
 	}
-	else if (lastCard == 13)
+	else if (lastCardValue == 13)
 	{
 		std::cout << "Table holds nothing" << std::endl;
 		std::cout << "What do you play?" << std::endl;
@@ -64,7 +66,7 @@ void Table::AskPlayerToPlay()
 	else
 	{
 		std::cout << "Table holds " << lastCardAmount;
-		switch (lastCard)
+		switch (lastCardValue)
 		{
 			default:
 				std::cout << " nothing";
@@ -111,7 +113,7 @@ void Table::AskPlayerToPlay()
 		}
 		if (lastCardAmount >= 2)
 		{
-			if (lastCard == SEAMSTRESS || lastCard == DUCHESS || lastCard == SHEPHERDESS)
+			if (lastCardValue == SEAMSTRESS || lastCardValue == DUCHESS || lastCardValue == SHEPHERDESS)
 				std::cout << "ES";
 			else
 				std::cout << "S";
@@ -120,6 +122,5 @@ void Table::AskPlayerToPlay()
 		std::cout << "What do you play?" << std::endl;
 	}
 }
-
 
 

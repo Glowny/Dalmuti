@@ -3,11 +3,11 @@
 
 int main()
 {
-	Table* asd = GameGenerator::GenerateGameTable(4);
-	asd->initTable();
+	Table* table = GameGenerator::GenerateGameTable(4);
+	table->InitTable();
 	while (true)
 	{
- 	 	asd->Update();
+ 	 	table->Update();
   		system("PAUSE");
   	}
 	return 0;
