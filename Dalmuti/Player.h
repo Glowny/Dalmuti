@@ -17,13 +17,15 @@ public:
 	~Player();
 	virtual Card* AI(std::vector<Card*>* poytakortit, int ylinkortti, int ylimmankortinmaara)
 	{
-		std::cout << playerName << " plays " << "1 Earl!" <<std::endl;
-		return new Card(3);
+		std::cout << playerName << " has no AI function"  <<std::endl;
+		std::cout << playerName << " returning pass (NOCARD)" << std::endl;
+		return new Card(NOCARD);
 	};
-	void DeleteCards(int card, int amount);
+	void RemoveCards(int card, int amount);
 	
 	std::string GetName(){ return playerName; };
 	
+	std::vector<Card*> GetHand();
 protected:
 
 	std::vector<Card*> hand;

@@ -24,9 +24,19 @@ private:
 	int lastCardValue;
 	int lastCardAmount;
 
-	void AskPlayerToPlay();
+	void PrintCurrentTable();
 	void CheckWinner();
 
+	void CheckIfAllPassed();
+	void SetNextPlayer();
+	Card* CallCurrentPlayerAI();
+
+	bool CheckPlay(Card* cards);
+	bool CheckTable(Card* cards);
+	bool CheckHand(Card* cards);
+	
+
+	void DiscardCards(Card* playedCards);
 	int passes;
 
 };

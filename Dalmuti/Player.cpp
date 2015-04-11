@@ -17,7 +17,7 @@ Player::~Player()
 
 }
 
-void Player::DeleteCards(int tempCARD, int tempAmount)
+void Player::RemoveCards(int tempCARD, int tempAmount)
 {
 	for (int i = 0; i < tempAmount; i++)
 	{
@@ -32,4 +32,9 @@ void Player::DeleteCards(int tempCARD, int tempAmount)
 	}
 	if (hand.size() == 0)
 		std::cout << "Player " << playerName << " wins!" << std::endl;
+}
+
+std::vector<Card*> Player::GetHand()
+{
+	return hand;
 }

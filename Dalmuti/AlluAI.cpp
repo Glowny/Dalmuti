@@ -61,7 +61,7 @@ Card* AlluAI::AI(std::vector<Card*>* poytakortit, int ylinkortti, int ylimmankor
 				toPlay->SetCardAmount(toPlay->GetCardAmount() + hand.at(i)->GetCardAmount());
 		}
 
-		std::cout << playerName << " plays: " << toPlay->GetCardValue() << "x" << toPlay->GetCardAmount() << std::endl;
+		std::cout << playerName << " plays: " << toPlay->GetCardAmount() << "x" << toPlay->GetCardValue() << std::endl;
 	}
 
 	return toPlay;

@@ -3,15 +3,15 @@
 
 Card::Card(int tempCardValue)
 {
-	cardValue = tempCardValue;
-	cardAmount = 1;
+	this->cardValue = tempCardValue;
+	this->cardAmount = 1;
 }
 
 
-Card::Card(int tempCardValue, int amount)
+Card::Card(int cardValue, int amount)
 {
-	cardValue = tempCardValue;
-	cardAmount = amount;
+	this->cardValue = cardValue;
+	this->cardAmount = amount;
 }
 
 

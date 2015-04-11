@@ -1,6 +1,16 @@
 #include "GameGenerator.h"
 
-void addToCards(std::vector<Card*> &cards, Card* card)
+std::string nameList[]
+{
+		"Pentti",
+		"Marko",
+		"Juhani",
+		"Tapani",
+		"Iiro",
+		"Simo"
+};
+
+void AddToCards(std::vector<Card*> &cards, Card* card)
 {
 	bool found = false;
 	for (int i = 0; i < cards.size(); i++)
@@ -22,9 +32,8 @@ void addToCards(std::vector<Card*> &cards, Card* card)
 
 Table* GameGenerator::GenerateGameTable(int players)
 {
-	Table* tempTable = new  Table();
+	Table* tempTable = new Table();
 	
-
 	Deck* tempDeck = Deck::MakeADeck();
 	std::vector<std::vector<Card*>> playerHands;
 	for (int i = 0; i < players; i++)
@@ -34,15 +43,18 @@ Table* GameGenerator::GenerateGameTable(int players)
 		{
 			Card* card = tempDeck->DealCard();
 			if (card != nullptr)
-				addToCards(cards, card);
+				AddToCards(cards, card);
 		}
 		playerHands.push_back(cards);
 	}
 
+	std::vector<std::string> nameVector;
+
 	for (int i = 0; i < players; i++)
 	{
-		Player* newPlayer = new AlluAI(playerHands[i], "Kokeilu");
+		Player* newPlayer = new AlluAI(playerHands[i], nameList[i]);
 		tempTable->AddPlayer(newPlayer);
 	}
 	return tempTable;
 }
+
