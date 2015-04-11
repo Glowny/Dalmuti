@@ -24,6 +24,7 @@ private:
 	int lastCardValue;
 	int lastCardAmount;
 
+	void PrintPlayerHands();
 	void PrintCurrentTable();
 	void CheckWinner();
 

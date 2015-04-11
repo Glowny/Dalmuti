@@ -138,6 +138,7 @@ void Table::DiscardCards(Card* playedCards)
 // Tulostaa tietoja näytölle, ei muuta toiminnallisuutta.
 void Table::PrintCurrentTable()
 {
+	PrintPlayerHands();
 	std::cout << std::endl;
 	std::cout << std::endl;
 
@@ -213,4 +214,57 @@ void Table::PrintCurrentTable()
 	}
 }
 
+void Table::PrintPlayerHands()
+{
+	std::vector<std::string> playerNames;
+	std::vector <std::vector<Card*>> playerHands;
+	for (int i = 0; i < players.size(); i++)
+	{
+		playerNames.push_back(players[i]->GetName());
+		playerHands.push_back(players[i]->GetHand());
+	}
+
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl; std::cout << std::endl;
+	std::cout << std::endl;
+
+
+	for (int i = 0; i < playerHands.size(); i++)
+	{		
+		std::cout << playerNames[i] << "Hand:  ";
+	}
+	std::cout << std::endl;
+	int largestHand = 0;
+	for (int i = 0; i < playerHands.size(); i++)
+	{
+		if (largestHand < playerHands[i].size())
+			largestHand = playerHands[i].size();
+	}
+
+	for (int j = 0; j < largestHand; j++)
+	{
+		for (int i = 0; i < playerHands.size(); i++)
+		{
+			if (playerHands[i].size() > j)
+			{
+				std::cout << playerHands[i].at(j)->GetCardAmount() << "x" << playerHands[i].at(j)->GetCardValue();
+				if (playerHands[i].at(j)->GetCardAmount() < 10)
+					std::cout << " ";
+				if (playerHands[i].at(j)->GetCardValue() < 10)
+					std::cout << " ";
+				std::cout << "        ";
+			}
+			else
+			{
+				std::cout << "             ";
+			}
+		}
+		std::cout << std::endl;
+	}
+
+}
 
