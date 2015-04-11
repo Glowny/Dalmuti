@@ -25,7 +25,7 @@ int Card::GetCardValue()
 	return cardValue;
 }
 
-void Card::setCardValue(int value)
+void Card::SetCardValue(int value)
 {
 	cardValue = value;
 }

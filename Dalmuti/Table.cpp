@@ -49,15 +49,15 @@ Card* Table::CallCurrentPlayerAI()
 }
 
 // Tarkastetaan voiko kortteja pelata
-bool Table::CheckPlay(Card* cards)
+bool Table::CheckPlay(Card* playedCards)
 {
 	// pelaajan PASS hyv‰ksyt‰‰n aina.
-	if (cards->GetCardValue() == NOCARD);
+	if (playedCards->GetCardValue() == NOCARD)
 		return true;
 
-	if (CheckTable(cards))
+	if (CheckTable(playedCards))
 	{
-		if (CheckHand(cards))
+		if (CheckHand(playedCards))
 			return true;
 		return false;
 	}
@@ -65,15 +65,15 @@ bool Table::CheckPlay(Card* cards)
 }
 
 // Tarkastetaan, onko pelaajan pelaamia kortteja tarpeeksi, ja ovatko ne tarpeeksi pieni‰.
-bool Table::CheckTable(Card* cards)
+bool Table::CheckTable(Card* playedCards)
 {
 	// Mit‰ tahansa joka laitetaan PASS:n p‰‰lle hyv‰ksyt‰‰n
 	if (lastCardValue == NOCARD)
 		return true; 
 
-	if (lastCardValue > cards->GetCardValue())
+	if (lastCardValue > playedCards->GetCardValue())
 	{
-		if (lastCardAmount < cards->GetCardAmount())
+		if (lastCardAmount <= playedCards->GetCardAmount())
 			return true;
 		return false;
 	}
@@ -81,8 +81,9 @@ bool Table::CheckTable(Card* cards)
 }
 
 // Tarkastetaan, onko pelaajalla n‰it‰ kortteja.
-bool Table::CheckHand(Card* cards)
+bool Table::CheckHand(Card* playedCards)
 {
+	
 	std::vector<Card*> playerHand = (*playerIterator)->GetHand();
 
 	int cardAmount = 0;
@@ -90,26 +91,27 @@ bool Table::CheckHand(Card* cards)
 	// Tarkastetaan onko pelaajalla yht‰‰n n‰it‰ kortteja.
 	for (int i = 0; i < playerHand.size(); i++)
 	{
-		if (playerHand[i]->GetCardValue() == cards->GetCardValue())
+		if (playerHand[i]->GetCardValue() == playedCards->GetCardValue())
 		{
-			cardAmount++;
+			cardAmount = playerHand[i]->GetCardAmount();
 		}
 	}
 	if (cardAmount == 0)
 		return false;
 	// Etsit‰‰n, onko pelaajalla jokereitaa korvaamaan pelattuja kortteja.
 
-	else if (cardAmount < cards->GetCardAmount())
+	else if (cardAmount != playedCards->GetCardAmount())
 	{
-		int jokerAmount = 0;
+    	int jokerAmount = 0;
 		for (int i = 0; i < playerHand.size(); i++)
 		{
 			if (playerHand[i]->GetCardValue() == JOKER)
 			{
-				jokerAmount++;
+				jokerAmount = playerHand[i]->GetCardAmount();
+				break;
 			}
 		}
-		if (cardAmount + jokerAmount < cards->GetCardAmount())
+		if (cardAmount < playedCards->GetCardAmount() + jokerAmount)
 			return false;
 	}
 	else

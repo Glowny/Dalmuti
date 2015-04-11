@@ -32,10 +32,10 @@ private:
 	void SetNextPlayer();
 	Card* CallCurrentPlayerAI();
 
-	bool CheckPlay(Card* cards);
+	bool CheckPlay(Card* playedCards);
 		// alifunktioita CheckPlay():lle
-	bool CheckTable(Card* cards);
-	bool CheckHand(Card* cards);
+	bool CheckTable(Card* playedCards);
+	bool CheckHand(Card* playedCards);
 	
 
 	void DiscardCards(Card* playedCards);

@@ -3,7 +3,6 @@
 
 VesaAly::VesaAly(std::vector<Card*> hand, std::string playerName) : Player(hand, playerName)
 {
-	
 }
 
 
@@ -23,12 +22,20 @@ Card* VesaAly::AI(std::vector<Card*>* poytakortit, int ylinkortti, int ylimmanko
 
 std::vector<Card> VesaAly::FindPlayableCards(int cardValue, int cardAmount)
 {
+	int jokerAmount = FindCard(JOKER).GetCardAmount();
 	std::vector<Card> playableCards;
  	for (int i = 0; i < cardValue; i++)
 	{
  		Card card = FindCard(i);
- 		if (card.GetCardValue() != NOCARD && card.GetCardAmount() > cardAmount)
+		if (card.GetCardValue() != NOCARD && card.GetCardAmount() + jokerAmount > cardAmount
+			&& card.GetCardAmount() > 0)
 		{
+			// Lasketaan montako jokeria tarvitaan, vain jos jokereita tarvitaan.
+			if (card.GetCardAmount() < cardAmount)
+			{
+				int jokerAmount = cardAmount - card.GetCardAmount();
+				card.SetCardAmount(card.GetCardAmount() + jokerAmount);
+			}
 			playableCards.push_back(card);
 		}
 	}
@@ -60,7 +67,7 @@ Card VesaAly::ChooseCardToPlay(std::vector<Card> PlayableCards)
 	}
 	else
 	{
-		std::cout << playerName<<" plays card " << card.GetCardValue() << "x" << card.GetCardAmount() << std::endl;
+		std::cout << playerName << " plays card " << card.GetCardAmount() << "x" << card.GetCardValue() << std::endl;
 	}
 	return card;
 		

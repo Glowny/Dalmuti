@@ -4,9 +4,9 @@ class VesaAly :public Player
 {
 public:
 	VesaAly(std::vector<Card*> hand, std::string playerName);
-
+	~VesaAly();
 	Card* AI(std::vector<Card*>* poytakortit, int ylinkortti, int ylimmankortinmaara);
-
+private:
 	std::vector<Card> FindPlayableCards(int cardValue, int cardAmount);
 	Card FindCard(int cardValue);
 
@@ -14,6 +14,8 @@ public:
 	Card FindBiggestValue(std::vector<Card> possibleCards);
 	Card FindLargestAmountOfCards(std::vector<Card> possibleCards);
 
-	~VesaAly();
+
+
+
 };
 

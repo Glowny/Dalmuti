@@ -29,7 +29,7 @@ public:
 	~Card();
 
 	int GetCardValue();
-	void setCardValue(int value);
+	void SetCardValue(int value);
 
 	int GetCardAmount();
 	void SetCardAmount(int amount);
