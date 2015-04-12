@@ -1,4 +1,7 @@
 #include "GameGenerator.h"
+#include <algorithm>
+
+
 
 std::string nameList[]
 {
@@ -50,12 +53,21 @@ Table* GameGenerator::GenerateGameTable(int playerAmount)
 
 	for (int i = 0; i < playerAmount; i++)
 	{
-		Player* newPlayer2 = new VesaAly(playerHands[i], nameList[i]);
+		Player* newPlayer2 = new VesaAly(SortCards(playerHands[i]), nameList[i]);
 		tempTable->AddPlayer(newPlayer2);
-	//	Player* newPlayer = new AlluAI(playerHands[i], nameList[i*2]);
-	//	tempTable->AddPlayer(newPlayer);
+		/*Player* newPlayer = new AlluAI(playerHands[i], nameList[i*2]);
+		tempTable->AddPlayer(newPlayer);*/
 
 	}
 	return tempTable;
 }
+bool sortFunction(Card* a, Card* b)
+{
+	return (a->GetCardValue() < b->GetCardValue());
+}
 
+std::vector<Card*> GameGenerator::SortCards(std::vector<Card*> cardsToBeSorted)
+{
+	std::sort(cardsToBeSorted.begin(), cardsToBeSorted.end(), sortFunction);
+	return cardsToBeSorted;
+}
