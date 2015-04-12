@@ -44,10 +44,9 @@ Temporary Items
 Dalmuti.opensdf
 Dalmuti.sdf
 *.log
-Dalmuti/Debug/Dalmuti.tlog/CL.write.1.tlog
+
 Debug/Dalmuti.exe
-Dalmuti/Debug/vc120.pdb
+Dalmuti/Debug
 Dalmuti.sdf
 Dalmuti.sdf
-Dalmuti/Debug/vc120.idb
-Dalmuti/Debug/Table.obj
+
