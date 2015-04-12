@@ -18,7 +18,7 @@ Card* AlluAI::AI(std::vector<Card*>* poytakortit, int ylinkortti, int ylimmankor
 	
 	if (ylinkortti == NOCARD)
 	{
-		for (int i = 0; i < hand.size(); i++)
+		for (unsigned i = 0; i < hand.size(); i++)
 		{
 			if (hand.at(i)->GetCardValue() != 0)
 				playbleCards.push_back(hand.at(i));
@@ -26,7 +26,7 @@ Card* AlluAI::AI(std::vector<Card*>* poytakortit, int ylinkortti, int ylimmankor
 	}
 	else
 	{
-		for (int i = 0; i < hand.size(); i++)
+		for (unsigned i = 0; i < hand.size(); i++)
 		{
 			if (hand.at(i)->GetCardValue() < ylinkortti)
 			{
@@ -44,7 +44,7 @@ Card* AlluAI::AI(std::vector<Card*>* poytakortit, int ylinkortti, int ylimmankor
 	if (playbleCards.size() > 0)
 	{
 		toPlay = playbleCards.at(0);
-		for (int i = 1; i < playbleCards.size(); i++)
+		for (unsigned i = 1; i < playbleCards.size(); i++)
 		{
 			if (playbleCards.at(i)->GetCardValue() > toPlay->GetCardValue())
 			{
@@ -55,7 +55,7 @@ Card* AlluAI::AI(std::vector<Card*>* poytakortit, int ylinkortti, int ylimmankor
 
 	if (toPlay->GetCardValue() != NOCARD)
 	{
-		for (int i = 0; i < hand.size(); i++)
+		for (unsigned i = 0; i < hand.size(); i++)
 		{
 			if (hand.at(i)->GetCardValue() == 0)
 				toPlay->SetCardAmount(toPlay->GetCardAmount() + hand.at(i)->GetCardAmount());

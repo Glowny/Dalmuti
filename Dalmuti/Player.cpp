@@ -6,7 +6,7 @@ Player::Player(std::vector<Card*> tempHand, std::string tempName)
 	playerName = tempName;
 	hand = tempHand;
 	handSize = 0;
-	for (int i = 0; i < hand.size(); i++)
+	for (unsigned i = 0; i < hand.size(); i++)
 	{
 		handSize += hand.at(i)->GetCardAmount();
 	}

@@ -20,8 +20,10 @@ void Table::Update()
 	PrintCurrentTable();
 
 	Card* playedCards = CallCurrentPlayerAI();
-
-	if (playedCards->GetCardValue() != NOCARD && CheckPlay(playedCards))
+	bool legitPlay = CheckPlay(playedCards);
+	if (legitPlay == false)
+		std::cout << "Player made illegal play, PASS" << std::endl;
+	if (playedCards->GetCardValue() != NOCARD && legitPlay)
 	{
 		DiscardCards(playedCards);
 		passes = 0;
@@ -88,7 +90,7 @@ bool Table::CheckHand(Card* playedCards)
 	int cardAmount = 0;
 
 	// Tarkastetaan onko pelaajalla yht‰‰n n‰it‰ kortteja.
-	for (int i = 0; i < playerHand.size(); i++)
+	for (unsigned i = 0; i < playerHand.size(); i++)
 	{
 		if (playerHand[i]->GetCardValue() == playedCards->GetCardValue())
 		{
@@ -103,7 +105,7 @@ bool Table::CheckHand(Card* playedCards)
 	else if (cardAmount < playedCards->GetCardAmount())
 	{
     	int jokerAmount = 0;
-		for (int i = 0; i < playerHand.size(); i++)
+		for (unsigned i = 0; i < playerHand.size(); i++)
 		{
 			if (playerHand[i]->GetCardValue() == JOKER)
 			{
@@ -111,10 +113,14 @@ bool Table::CheckHand(Card* playedCards)
 				break;
 			}
 		}
-		if (cardAmount + jokerAmount < playedCards->GetCardAmount() )
+		if (cardAmount + jokerAmount < playedCards->GetCardAmount())
+		{
+			std::cout << (*playerIterator)->GetName() << " tried to play " << playedCards->GetCardAmount() << "x" << playedCards->GetCardValue()
+				<< ", but has not enought jokers. Jokeramount: " << jokerAmount << std::endl;
 			return false;
+		}
 	}
-	else
+
 	return true;
 }
 
@@ -220,37 +226,31 @@ void Table::PrintPlayerHands()
 {
 	std::vector<std::string> playerNames;
 	std::vector <std::vector<Card*>> playerHands;
-	for (int i = 0; i < players.size(); i++)
+	for (unsigned i = 0; i < players.size(); i++)
 	{
 		playerNames.push_back(players[i]->GetName());
 		playerHands.push_back(players[i]->GetHand());
 	}
 
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl; 
-	std::cout << std::endl;
+	for (int i = 0; i < 15; i++)
 	std::cout << std::endl;
 
 
-	for (int i = 0; i < playerHands.size(); i++)
+	for (unsigned i = 0; i < playerHands.size(); i++)
 	{		
 		std::cout << playerNames[i] << "Hand:  ";
 	}
 	std::cout << std::endl;
-	int largestHand = 0;
-	for (int i = 0; i < playerHands.size(); i++)
+	unsigned largestHand = 0;
+	for (unsigned i = 0; i < playerHands.size(); i++)
 	{
 		if (largestHand < playerHands[i].size())
 			largestHand = playerHands[i].size();
 	}
 
-	for (int j = 0; j < largestHand; j++)
+	for (unsigned j = 0; j < largestHand; j++)
 	{
-		for (int i = 0; i < playerHands.size(); i++)
+		for (unsigned i = 0; i < playerHands.size(); i++)
 		{
 			if (playerHands[i].size() > j)
 			{

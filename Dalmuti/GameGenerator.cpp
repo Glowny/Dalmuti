@@ -13,7 +13,7 @@ std::string nameList[]
 void AddToCards(std::vector<Card*> &cards, Card* card)
 {
 	bool found = false;
-	for (int i = 0; i < cards.size(); i++)
+	for (unsigned i = 0; i < cards.size(); i++)
 	{
 		if (card->GetCardValue() == cards.at(i)->GetCardValue())
 		{
