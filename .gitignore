@@ -45,8 +45,8 @@ Dalmuti.opensdf
 Dalmuti.sdf
 *.log
 
-Debug/Dalmuti.exe
 Dalmuti/Debug
+Debug
 Dalmuti.sdf
 Dalmuti.sdf
 
