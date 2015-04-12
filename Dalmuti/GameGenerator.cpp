@@ -50,10 +50,10 @@ Table* GameGenerator::GenerateGameTable(int playerAmount)
 
 	for (int i = 0; i < playerAmount; i++)
 	{
-		Player* newPlayer2 = new VesaAly(playerHands[i], nameList[i * 2 + 1]);
+		Player* newPlayer2 = new VesaAly(playerHands[i], nameList[i]);
 		tempTable->AddPlayer(newPlayer2);
-		Player* newPlayer = new AlluAI(playerHands[i], nameList[i*2]);
-		tempTable->AddPlayer(newPlayer);
+	//	Player* newPlayer = new AlluAI(playerHands[i], nameList[i*2]);
+	//	tempTable->AddPlayer(newPlayer);
 
 	}
 	return tempTable;

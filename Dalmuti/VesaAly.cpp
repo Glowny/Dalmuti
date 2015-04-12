@@ -24,10 +24,11 @@ std::vector<Card> VesaAly::FindPlayableCards(int cardValue, int cardAmount)
 {
 	int jokerAmount = FindCard(JOKER).GetCardAmount();
 	std::vector<Card> playableCards;
- 	for (int i = 0; i < cardValue; i++)
+	// Ei etsitä jokereita, aloitetaan 1.
+ 	for (int i = 1; i < cardValue; i++)
 	{
  		Card card = FindCard(i);
-		if (card.GetCardValue() != NOCARD && card.GetCardAmount() + jokerAmount > cardAmount
+		if (card.GetCardValue() != NOCARD && card.GetCardAmount() + jokerAmount >= cardAmount
 			&& card.GetCardAmount() > 0)
 		{
 			// Lasketaan montako jokeria tarvitaan, vain jos jokereita tarvitaan.
@@ -60,7 +61,7 @@ Card VesaAly::FindCard(int cardValue)
 
 Card VesaAly::ChooseCardToPlay(std::vector<Card> PlayableCards)
 {
-	Card card = FindBiggestValue(PlayableCards);
+	Card card = FindMostCards(PlayableCards);
 	if (card.GetCardValue() == NOCARD)
 	{
 		std::cout <<"PASS || NOCARD" << std::endl;
@@ -91,7 +92,7 @@ Card VesaAly::FindBiggestValue(std::vector<Card> possibleCards)
 	card.SetCardAmount(cardAmount);
 	return card;
 }
-Card VesaAly::FindLargestAmountOfCards(std::vector<Card> possibleCards)
+Card VesaAly::FindMostCards(std::vector<Card> possibleCards)
 {
 	int largestAmount = 0;
 	int cardValue = -1;

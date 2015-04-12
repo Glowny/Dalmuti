@@ -17,15 +17,15 @@ Player::~Player()
 
 }
 
-void Player::RemoveCards(int tempCARD, int tempAmount)
+void Player::RemoveCards(int cardValue, int cardAmount)
 {
-	int requestedJokerAmount = tempAmount;
+	int requestedJokerAmount = 0;
 
 	for (std::vector<Card*>::iterator it = hand.begin(); it != hand.end(); it++)
 	{
-		if ((*it)->GetCardValue() == tempCARD)
+		if ((*it)->GetCardValue() == cardValue)
 		{
-			requestedJokerAmount  = tempAmount - (*it)->GetCardAmount();
+			requestedJokerAmount = cardAmount - (*it)->GetCardAmount();
 			hand.erase(it);
 			break;
 		}
@@ -33,14 +33,14 @@ void Player::RemoveCards(int tempCARD, int tempAmount)
 	
 	if (requestedJokerAmount > 0)
 	{
-		for (std::vector<Card*>::iterator it = hand.begin(); it != hand.end(); it++)
+ 		for (std::vector<Card*>::iterator it = hand.begin(); it != hand.end(); it++)
 		{
 			if ((*it)->GetCardValue() == JOKER)
 			{
 				if ((*it)->GetCardAmount() > requestedJokerAmount)
-					hand.erase(it);
-				else
 					(*it)->SetCardAmount((*it)->GetCardAmount() - requestedJokerAmount);
+				else
+					hand.erase(it);
 				break;
 			}
 		}

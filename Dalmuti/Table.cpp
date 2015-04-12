@@ -83,7 +83,6 @@ bool Table::CheckTable(Card* playedCards)
 // Tarkastetaan, onko pelaajalla näitä kortteja.
 bool Table::CheckHand(Card* playedCards)
 {
-	
 	std::vector<Card*> playerHand = (*playerIterator)->GetHand();
 
 	int cardAmount = 0;
@@ -94,13 +93,14 @@ bool Table::CheckHand(Card* playedCards)
 		if (playerHand[i]->GetCardValue() == playedCards->GetCardValue())
 		{
 			cardAmount = playerHand[i]->GetCardAmount();
+			break;
 		}
 	}
 	if (cardAmount == 0)
 		return false;
 	// Etsitään, onko pelaajalla jokereitaa korvaamaan pelattuja kortteja.
 
-	else if (cardAmount != playedCards->GetCardAmount())
+	else if (cardAmount < playedCards->GetCardAmount())
 	{
     	int jokerAmount = 0;
 		for (int i = 0; i < playerHand.size(); i++)
@@ -111,7 +111,7 @@ bool Table::CheckHand(Card* playedCards)
 				break;
 			}
 		}
-		if (cardAmount < playedCards->GetCardAmount() + jokerAmount)
+		if (cardAmount + jokerAmount < playedCards->GetCardAmount() )
 			return false;
 	}
 	else
@@ -231,7 +231,8 @@ void Table::PrintPlayerHands()
 	std::cout << std::endl;
 	std::cout << std::endl;
 	std::cout << std::endl;
-	std::cout << std::endl; std::cout << std::endl;
+	std::cout << std::endl; 
+	std::cout << std::endl;
 	std::cout << std::endl;
 
 

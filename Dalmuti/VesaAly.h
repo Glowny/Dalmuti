@@ -12,7 +12,7 @@ private:
 
 	Card ChooseCardToPlay(std::vector<Card> PlayableCards);
 	Card FindBiggestValue(std::vector<Card> possibleCards);
-	Card FindLargestAmountOfCards(std::vector<Card> possibleCards);
+	Card FindMostCards(std::vector<Card> possibleCards);
 
 
 
