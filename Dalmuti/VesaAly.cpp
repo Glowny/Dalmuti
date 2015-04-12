@@ -58,7 +58,7 @@ Card VesaAly::FindCard(int cardValue)
 			return card;
 		}
 	}
-	return Card(NOCARD);
+	return Card(NOCARD, 0);
 }
 
 
