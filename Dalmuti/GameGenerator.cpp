@@ -39,6 +39,8 @@ Table* GameGenerator::GenerateGameTable(int playerAmount)
 	
 	Deck* tempDeck = Deck::MakeADeck();
 	std::vector<std::vector<Card*>> playerHands;
+
+
 	for (int i = 0; i < playerAmount; i++)
 	{
 		std::vector<Card*> cards;
@@ -51,14 +53,17 @@ Table* GameGenerator::GenerateGameTable(int playerAmount)
 		playerHands.push_back(cards);
 	}
 
-	for (int i = 0; i < playerAmount; i++)
+
+	for (int i = 0; i < playerAmount/2; i++)
 	{
 		Player* newPlayer2 = new VesaAly(SortCards(playerHands[i]), nameList[i]);
 		tempTable->AddPlayer(newPlayer2);
-		/*Player* newPlayer = new AlluAI(playerHands[i], nameList[i*2]);
-		tempTable->AddPlayer(newPlayer);*/
+		Player* newPlayer = new AlluAI(SortCards(playerHands[i+2]), nameList[i+2]);
+		tempTable->AddPlayer(newPlayer);
 
 	}
+
+
 	return tempTable;
 }
 bool sortFunction(Card* a, Card* b)

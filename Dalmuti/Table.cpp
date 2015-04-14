@@ -13,6 +13,68 @@ void Table::AddPlayer(Player* newPlayer)
 	players.push_back(newPlayer);
 }
 
+void echoPlayedCards(std::string playerName, Card* playedCards)
+{
+	int lastCardAmount = playedCards->GetCardAmount();
+	int lastCardValue = playedCards->GetCardValue();
+
+	std::cout << playerName << " plays: " << lastCardAmount << " x ";
+
+	switch (lastCardValue)
+	{
+	default:
+		std::cout << "nothing";
+		break;
+	case 0:
+		std::cout << "JOKER";
+		break;
+	case 1:
+		std::cout << "DALMUTI";
+		break;
+	case 2:
+		std::cout << "BISHOP";
+		break;
+	case 3:
+		std::cout << "EARL";
+		break;
+	case 4:
+		std::cout << "DUCHESS";
+		break;
+	case 5:
+		std::cout << "ABEDISSA";
+		break;
+	case 6:
+		std::cout << "KNIGHT";
+		break;
+	case 7:
+		std::cout << "SEAMSTRESS";
+		break;
+	case 8:
+		std::cout << "MASON";
+		break;
+	case 9:
+		std::cout << "COOK";
+		break;
+	case 10:
+		std::cout << "SHEPHERDESS";
+		break;
+	case 11:
+		std::cout << "STONECUTTER";
+		break;
+	case 12:
+		std::cout << "PEASANT";
+		break;
+	}
+	if (lastCardAmount >= 2)
+	{
+		if (lastCardValue == SEAMSTRESS || lastCardValue == DUCHESS || lastCardValue == SHEPHERDESS)
+			std::cout << "ES";
+		else
+			std::cout << "S";
+	}
+	std::cout << "(" << lastCardValue << ") " << std::endl;
+}
+
 void Table::Update()
 {
 	CheckIfAllPassed();
@@ -27,9 +89,13 @@ void Table::Update()
 	{
 		DiscardCards(playedCards);
 		passes = 0;
+		echoPlayedCards((*playerIterator)->GetName(), playedCards);
 	}
 	else
+	{
 		passes++;
+		std::cout << "PASS" << std::endl;
+	}
 	SetNextPlayer();
 }
 // Tarkastetaan saako seuraava pelaaja pelata mitä vain
@@ -155,12 +221,12 @@ void Table::PrintCurrentTable()
 	if (discardIterator == discard.begin())
 	{
 		std::cout << "Table holds nothing" << std::endl;
-		std::cout << "What do you play?" << std::endl;
+		//std::cout << "What do you play?" << std::endl;
 	}
 	else if (lastCardValue == NOCARD)
 	{
 		std::cout << "Table holds nothing" << std::endl;
-		std::cout << "What do you play?" << std::endl;
+		//std::cout << "What do you play?" << std::endl;
 	}
 	else
 	{
@@ -218,7 +284,7 @@ void Table::PrintCurrentTable()
 				std::cout << "S";
 		}
 		std::cout << std::endl;
-		std::cout << "What do you play?" << std::endl;
+		//std::cout << "What do you play?" << std::endl;
 	}
 }
 

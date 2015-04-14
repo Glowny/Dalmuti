@@ -6,7 +6,9 @@ public:
 	VesaAly(std::vector<Card*> hand, std::string playerName);
 	~VesaAly();
 	Card* AI(std::vector<Card*>* poytakortit, int ylinkortti, int ylimmankortinmaara);
+
 private:
+
 	std::vector<Card> FindPlayableCards(int cardValue, int cardAmount);
 	Card FindCard(int cardValue);
 

@@ -92,10 +92,11 @@ Deck* Deck::MakeADeck()
 }
 
 Card* Deck::DealCard()
-{
-	Card* tempCard = cards.at(0);
-	cards.erase(cards.begin());
+{	
 	if (cards.begin() == cards.end())
 		return nullptr;
+	Card* tempCard = cards.at(0);
+	cards.erase(cards.begin());
+
 	return tempCard;
 }

@@ -25,12 +25,11 @@ void Player::RemoveCards(int cardValue, int cardAmount)
 	{
 		if ((*it)->GetCardValue() == cardValue)
 		{
-			extraCardAmount = cardAmount - (*it)->GetCardAmount();
+			extraCardAmount = cardAmount - ((*it)->GetCardAmount() );
 			if (extraCardAmount < 0)
-				(*it)->SetCardAmount((*it)->GetCardAmount() + extraCardAmount);
+				(*it)->SetCardAmount((*it)->GetCardAmount() - cardAmount);
 			else
 				hand.erase(it);
-
 			break;
 		}
 	}
