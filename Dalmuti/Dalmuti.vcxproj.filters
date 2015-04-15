@@ -42,6 +42,9 @@
     <ClCompile Include="VesaAly.cpp">
       <Filter>Header Files\AI</Filter>
     </ClCompile>
+    <ClCompile Include="JPbot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h">
@@ -65,5 +68,11 @@
     <ClInclude Include="VesaAly.h">
       <Filter>Header Files\AI</Filter>
     </ClInclude>
+    <ClInclude Include="JPbot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

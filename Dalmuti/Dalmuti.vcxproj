@@ -68,6 +68,7 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="GameGenerator.cpp" />
+    <ClCompile Include="JPbot.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Table.cpp" />
@@ -78,9 +79,13 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="GameGenerator.h" />
+    <ClInclude Include="JPbot.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Table.h" />
     <ClInclude Include="VesaAly.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

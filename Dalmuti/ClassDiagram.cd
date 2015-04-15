@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Card">
+    <Position X="4.75" Y="1.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>ACBAAAAgAACAgAAAAAAAAAAAAAAAAggAAAAAAAAAAAI=</HashCode>
+      <FileName>Card.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Deck">
+    <Position X="4.75" Y="4.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAgAAAAAAAAAAAAABABAAgAAAAA=</HashCode>
+      <FileName>Deck.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameGenerator">
+    <Position X="6.5" Y="1.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameGenerator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player">
+    <Position X="1.25" Y="1.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AQAIAAAAAAAAAAggAAEAAAAAAAAAIAAAAAAAAQAABBA=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Table">
+    <Position X="3" Y="1.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQwAACEEQQQEAAAgAQARAAAIAIABAAAIAgAAAAQIAg=</HashCode>
+      <FileName>Table.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlluAI" Collapsed="true">
+    <Position X="1.25" Y="4.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAACAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AlluAI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VesaAly" Collapsed="true">
+    <Position X="1.25" Y="6" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAEEAAAAAACAASAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>VesaAly.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="CARD">
+    <Position X="6.5" Y="3.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAQUAAAIICAIBAAQAAAAAAAEEIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Card.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
